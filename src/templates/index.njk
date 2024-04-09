@@ -1,0 +1,60 @@
+<style>
+body {
+      font-family: Verdana,sans-serif;
+      max-width: 768px;
+      margin: auto;
+      padding: 16px 16px 800px;
+  }
+  main {
+      border: 1px solid black;
+      padding: 16px;
+      margin: 16px;
+  }
+  p {
+      line-height: 1.8em;
+  }
+  aside {
+      margin: 24px;
+      font-style: italic;
+  }
+  code {
+      color: forestgreen;
+      font-weight: bold;
+  }
+
+  article {
+    margin-top: 5px;
+    border: solid black 1px;
+    background-color: bisque;
+    padding: 1rem;
+  }
+
+  .top-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+</style>
+<title>Alex's Post</title>
+<h1>Alex's Fake Twitter</h1>
+
+<h2>New Post</h2>
+<form action=/posts method=POST>
+  <input text=text name=content>
+  <button>Submit</button>
+</form>
+New posts will go here
+
+<h2>Posts</h2>
+{% for post in posts %}
+  <article>
+  <div class=top-bar>
+    <address>{{ post.author }}</address>
+    <form action=/posts/{{ post.post_id }}/delete method=POST>
+    <button>Delete</button>
+    </form>
+  </div>
+  <p>{{ post.content }}</p>
+  </article>
+{% endfor %}
